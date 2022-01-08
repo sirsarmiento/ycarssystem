@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../services';
 
 @Component({
     selector: 'sb-login',
@@ -19,10 +20,11 @@ export class LoginComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
+        private authService: AuthService
     ) {
         this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required]
+            username: ['ssarmiento', Validators.required],
+            password: ['Tucson*50*', Validators.required]
         });
 
     }
@@ -38,25 +40,12 @@ export class LoginComponent implements OnInit {
     onSubmit() {
         this.loading = true;
         this.submitted = true;
-        // stop here if form is invalidmessage
+        
         if (this.loginForm.invalid) {
             this.loading = false;
             return;
         }
 
-        // this.authenticationService.login(this.f.username.value, this.f.password.value)
-        // .pipe(first())
-        // .subscribe(
-        //     data => {
-        //         this.router.navigate([this.returnUrl]);
-        //         localStorage.setItem('user', this.f.username.value );
-        //     },
-        //     error => {
-        //         this.error = error;
-        //         this.loading = false;
-        //         console.log(error);
-        //     });
-   
-        this.router.navigate([this.returnUrl]);
+        this.authService.login(this.f.username.value, this.f.password.value);
     }
 }

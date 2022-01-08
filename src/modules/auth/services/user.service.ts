@@ -12,7 +12,8 @@ export class UserService {
             id: '123',
             firstName: 'Sir',
             lastName: 'Sarmiento',
-            email: 'sirsarmiento@gmail.com',
+            username: 'sirsarmiento',
+            password: '',
         };
     }
 
