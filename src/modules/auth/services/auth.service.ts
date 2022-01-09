@@ -1,38 +1,43 @@
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { User } from '../models';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+
 import { environment } from '../../../environments/environment';
+import { User } from '../models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    headers = new HttpHeaders().set('Content-Type', 'application/json');
-    currentUser = {};
+    private currentUserSubject: BehaviorSubject<User | null>;
+    public currentUser: Observable<User | null>;
 
-    constructor(private http: HttpClient, public router: Router) {}
-
-    // Sign-in
-    login(username: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/api/login_check`, { username, password })
-        .subscribe((res: any) => {
-            localStorage.setItem('access_token', res.token)
-            this.currentUser = res;
-            this.router.navigate(['/dashboard']);
-        })
+    constructor(private http: HttpClient, public router: Router) {
+        const returnUser = localStorage.getItem('currentUser') || '{}';
+        this.currentUserSubject = new BehaviorSubject<User | null>(JSON.parse(returnUser));
+        this.currentUser = this.currentUserSubject.asObservable();
     }
 
-    // Error 
-    handleError(error: HttpErrorResponse) {
-        let msg = '';
-        if (error.error instanceof ErrorEvent) {
-        // client-side error
-        msg = error.error.message;
-        } else {
-        // server-side error
-        msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
-        }
-        return throwError(msg);
+    public get currentUserValue(): User | null {
+        return this.currentUserSubject.value;
+    }
+
+    login(username: string, password: string) {
+        return this.http
+            .post<any>(`${environment.apiUrl}/api/login_check`, { username, password })
+            .pipe(
+                map(user => {
+                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    this.currentUserSubject.next(user);
+                    return user;
+                })
+            );
+    }
+
+    logout() {
+        // remove user from local storage to log user out
+        localStorage.removeItem('currentUser');
+        this.currentUserSubject.next(null);
     }
 }

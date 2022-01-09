@@ -13,7 +13,6 @@ export class UserService {
             firstName: 'Sir',
             lastName: 'Sarmiento',
             username: 'sirsarmiento',
-            password: '',
         };
     }
 

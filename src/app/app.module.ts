@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AuthInterceptor } from 'shared/auth.interceptor';
+import { AuthInterceptor } from '@modules/auth/intercertors/auth.interceptor';
 
 @NgModule({
     declarations: [AppComponent],
