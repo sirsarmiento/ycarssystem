@@ -7,12 +7,14 @@ const userSubject: ReplaySubject<User> = new ReplaySubject(1);
 
 @Injectable()
 export class UserService {
+    userName: any;
     constructor() {
+        this.userName = localStorage.getItem('user');
         this.user = {
             id: '123',
-            firstName: 'Sir',
-            lastName: 'Sarmiento',
-            username: 'sirsarmiento',
+            firstName: 'ValornoenviadodesdeBackend',
+            lastName: 'ValornoenviadodesdeBackend',
+            username: this.userName,
         };
     }
 

@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'http://naranjaffd1.sytes.net:8091'
+    apiUrl: 'http://fsbackend:8090'
 };
 
 /*
