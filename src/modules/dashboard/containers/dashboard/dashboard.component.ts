@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-
 import { DashboardService } from '../../services';
 
 @Component({
@@ -12,8 +11,8 @@ export class DashboardComponent implements OnInit {
     constructor(private dashboardService: DashboardService) {}
 
     ngOnInit() {
-        //     this.dashboardService.getTest().subscribe((res: any) => {
-        //      console.log(res);
-        //   });
+    //     this.dashboardService.getTest().subscribe((res: any) => {
+    //      console.log(res);
+    //   });
     }
 }

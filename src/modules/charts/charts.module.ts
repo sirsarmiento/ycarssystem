@@ -7,19 +7,18 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 /* Modules */
 import { AppCommonModule } from '@common/app-common.module';
 import { NavigationModule } from '@modules/navigation/navigation.module';
-import { ChartsModule } from '@modules/charts/charts.module';
 
 /* Components */
-import * as dashboardComponents from './components';
+import * as chartsComponents from './components';
 
 /* Containers */
-import * as dashboardContainers from './containers';
+import * as chartsContainers from './containers';
 
 /* Guards */
-import * as dashboardGuards from './guards';
+import * as chartsGuards from './guards';
 
 /* Services */
-import * as dashboardServices from './services';
+import * as chartsServices from './services';
 
 @NgModule({
     imports: [
@@ -29,10 +28,9 @@ import * as dashboardServices from './services';
         FormsModule,
         AppCommonModule,
         NavigationModule,
-        ChartsModule
     ],
-    providers: [...dashboardServices.services, ...dashboardGuards.guards],
-    declarations: [...dashboardContainers.containers, ...dashboardComponents.components],
-    exports: [...dashboardContainers.containers, ...dashboardComponents.components],
+    providers: [...chartsServices.services, ...chartsGuards.guards],
+    declarations: [...chartsContainers.containers, ...chartsComponents.components],
+    exports: [...chartsContainers.containers, ...chartsComponents.components],
 })
-export class DashboardModule {}
+export class ChartsModule {}

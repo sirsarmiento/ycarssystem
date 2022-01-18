@@ -4,65 +4,29 @@ import { Routes, RouterModule } from '@angular/router';
 import { SBRouteData } from '@modules/navigation/models';
 
 /* Module */
-import { UserModule } from './user.module';
+import { UserModule } from '@modules/user/user.module';
 
-/* Containers */
-import * as userContainers from './containers';
+/* Components */
+import * as userComponents from '@modules/user/components';
 
 /* Guards */
-import * as userGuards from './guards';
+import * as dashboardGuards from '@modules/user/guards';
 
 /* Routes */
 export const ROUTES: Routes = [
     {
         path: '',
         data: {
-            title: 'Dashboard - YCarsSystem',
+            title: 'User - YCarsSystem',
             breadcrumbs: [
                 {
-                    text: 'User',
+                    text: 'Users',
                     active: true,
                 },
             ],
         } as SBRouteData,
         canActivate: [],
-        component: userContainers.ShowComponent,
-    },
-    {
-        path: 'register',
-        data: {
-            title: 'Dashboard Static - YCarsSystem',
-            breadcrumbs: [
-                {
-                    text: 'Dashboard',
-                    link: '/user',
-                },
-                {
-                    text: 'Static',
-                    active: true,
-                },
-            ],
-        } as SBRouteData,
-        canActivate: [],
-        component: userContainers.RegisterComponent,
-    },
-    {
-        path: 'update',
-        data: {
-            title: 'Dashboard Light - YCarsSystem',
-            breadcrumbs: [
-                {
-                    text: 'Dashboard',
-                    link: '/user',
-                },
-                {
-                    text: 'Light',
-                    active: true,
-                },
-            ],
-        } as SBRouteData,
-        canActivate: [],
-        component: userContainers.UpdateComponent,
+        component: userComponents.UserComponent,
     },
 ];
 

@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 export class DashboardService {
     constructor(private http: HttpClient) {}
 
-    // getTest(){
+     getTest(){
     //   return this.http.get(`${environment.apiUrl}/stellar/notas/entregas/20211101/20211105`);
-    // }
+     }
 }

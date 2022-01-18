@@ -9,16 +9,14 @@ import { AppCommonModule } from '@common/app-common.module';
 import { NavigationModule } from '@modules/navigation/navigation.module';
 
 /* Components */
-import * as userComponents from './components';
+import * as userComponents from '@modules/user/components';
 
-/* Containers */
-import * as userContainers from './containers';
 
 /* Guards */
-import * as userGuards from './guards';
+import * as userGuards from '@modules/user/guards';
 
 /* Services */
-import * as userServices from './services';
+import * as userServices from '@modules/user/services';
 
 @NgModule({
     imports: [
@@ -29,8 +27,8 @@ import * as userServices from './services';
         AppCommonModule,
         NavigationModule,
     ],
-    providers: [...userServices.services, ...userGuards.users],
-    declarations: [...userContainers.containers, ...userComponents.components],
-    exports: [...userContainers.containers, ...userComponents.components],
+    providers: [...userServices.services, ...userGuards.guards],
+    declarations: [...userComponents.components],
+    exports: [...userComponents.components],
 })
 export class UserModule {}

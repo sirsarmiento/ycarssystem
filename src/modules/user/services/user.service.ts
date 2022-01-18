@@ -1,11 +1,13 @@
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { environment } from 'environments/environment';
 
 @Injectable()
 export class UserService {
-    constructor() {}
+    constructor(private http: HttpClient) {}
 
-    getUser$(): Observable<{}> {
-        return of({});
-    }
+    // getTest(){
+    //   return this.http.get(`${environment.apiUrl}/stellar/notas/entregas/20211101/20211105`);
+    // }
 }

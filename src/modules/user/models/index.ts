@@ -1,1 +1,1 @@
-export * from './user.model';
+export * from '@modules/user/models/user.model';

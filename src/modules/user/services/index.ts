@@ -1,5 +1,5 @@
-import { UserService } from './user.service';
+import { UserService } from '@modules/user/services/user.service';
 
 export const services = [UserService];
 
-export * from './user.service';
+export * from '@modules/user/services/user.service';
