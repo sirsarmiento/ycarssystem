@@ -2,20 +2,36 @@ import { SideNavItems, SideNavSection } from '@modules/navigation/models';
 
 export const sideNavSections: SideNavSection[] = [
     {
-        text: 'CORE',
-        items: ['dashboard'],
+        text: 'ADMIN',
+        items: ['user', 'rol', 'state', 'city', 'dashboard'],
     },
     {
         text: 'INTERFACE',
         items: ['layouts', 'pages'],
     },
-    {
-        text: 'ADDONS',
-        items: ['charts', 'tables'],
-    },
 ];
 
 export const sideNavItems: SideNavItems = {
+    user: {
+        icon: 'tachometer-alt',
+        text: 'Usuario',
+        link: '/user',
+    },
+    rol: {
+        icon: 'tachometer-alt',
+        text: 'Roles',
+        link: '/rol',
+    },
+    city: {
+        icon: 'tachometer-alt',
+        text: 'Ciudades',
+        link: '/city',
+    },
+    state: {
+        icon: 'tachometer-alt',
+        text: 'Estados',
+        link: '/state',
+    },
     dashboard: {
         icon: 'tachometer-alt',
         text: 'Dashboard',
@@ -74,15 +90,5 @@ export const sideNavItems: SideNavItems = {
                 ],
             },
         ],
-    },
-    charts: {
-        icon: 'chart-area',
-        text: 'Charts',
-        link: '/charts',
-    },
-    tables: {
-        icon: 'table',
-        text: 'Tables',
-        link: '/tables',
     },
 };

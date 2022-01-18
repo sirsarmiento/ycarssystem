@@ -8,9 +8,9 @@ const routes: Routes = [
         redirectTo: '/auth/login',
     },
     {
-        path: 'charts',
+        path: 'user',
         loadChildren: () =>
-            import('modules/charts/charts-routing.module').then(m => m.ChartsRoutingModule),
+            import('modules/user/user-routing.module').then(m => m.UserRoutingModule),
     },
     {
         path: 'dashboard',
@@ -28,11 +28,6 @@ const routes: Routes = [
         path: 'error',
         loadChildren: () =>
             import('modules/error/error-routing.module').then(m => m.ErrorRoutingModule),
-    },
-    {
-        path: 'tables',
-        loadChildren: () =>
-            import('modules/tables/tables-routing.module').then(m => m.TablesRoutingModule),
     },
     {
         path: 'version',
