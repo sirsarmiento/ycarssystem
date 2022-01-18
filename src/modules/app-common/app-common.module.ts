@@ -9,6 +9,16 @@ import { IconsModule } from '@modules/icons/icons.module';
 
 const thirdParty = [IconsModule, NgbModule];
 
+/* Angular Material */
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+const angulaMaterial = [MatTableModule, MatIconModule, MatTooltipModule, MatPaginatorModule, MatSortModule, MatFormFieldModule];
+
 /* Containers */
 import * as appCommonContainers from './containers';
 
@@ -23,9 +33,9 @@ import * as appCommonServices from './services';
 import * as authServices from '@modules/auth/services';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, ...thirdParty],
+    imports: [CommonModule, RouterModule, ...thirdParty, ...angulaMaterial],
     providers: [...appCommonServices.services, ...authServices.services, ...appCommonGuards.guards],
     declarations: [...appCommonContainers.containers, ...appCommonComponents.components],
-    exports: [...appCommonContainers.containers, ...appCommonComponents.components, ...thirdParty],
+    exports: [...appCommonContainers.containers, ...appCommonComponents.components, ...thirdParty, ...angulaMaterial],
 })
 export class AppCommonModule {}
