@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
                     // get return url from route parameters or default to '/'
                     const returnUrl = this.route.snapshot.queryParams.returnUrl || '/dashboard';
                     this.router.navigate([returnUrl]);
+                    localStorage.setItem('user', this.f.username.value );
                 },
                 error: error => {
                     console.log(error.name);

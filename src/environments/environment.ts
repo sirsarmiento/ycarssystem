@@ -4,7 +4,11 @@
 
 export const environment = {
     production: false,
+<<<<<<< HEAD
     apiUrl: 'http://localhost:8090/ytallerbackend/public',
+=======
+    apiUrl: 'http://fsbackend:8090'
+>>>>>>> 542a5a8e68b0125fb8ff02b46c9aef574e1f7a43
 };
 
 /*

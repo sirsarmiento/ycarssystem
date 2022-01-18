@@ -14,7 +14,8 @@ export class TopNavUserComponent implements OnInit {
     ngOnInit() {}
 
     doLogout() {
-        let removeToken = localStorage.removeItem('access_token');
+        localStorage.removeItem('user');
+        let removeToken = localStorage.removeItem('currentUser');
         if (removeToken == null) {
             this.router.navigate(['/auth/login']);
         }
