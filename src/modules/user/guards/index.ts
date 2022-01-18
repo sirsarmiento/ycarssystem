@@ -1,5 +1,5 @@
 import { UserGuard } from './user.guard';
 
-export const guards = [UserGuard];
+export const users = [UserGuard];
 
 export * from './user.guard';

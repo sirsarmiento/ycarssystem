@@ -1,30 +1,37 @@
+/* tslint:disable: ordered-imports*/
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { SBRouteData } from '@modules/navigation/models';
 
-/* Components */
-import * as userComponents from './components';
+/* Module */
 import { UserModule } from './user.module';
 
-const ROUTES: Routes = [
+/* Containers */
+import * as userContainers from './containers';
+
+/* Guards */
+import * as userGuards from './guards';
+
+/* Routes */
+export const ROUTES: Routes = [
     {
         path: '',
         data: {
-            title: 'Usuarios - YCarsSystem',
+            title: 'Dashboard - YCarsSystem',
             breadcrumbs: [
                 {
-                    text: 'Usuarios',
+                    text: 'User',
                     active: true,
                 },
             ],
         } as SBRouteData,
         canActivate: [],
-        component: userComponents.UserComponent,
+        component: userContainers.ShowComponent,
     },
     {
         path: 'register',
         data: {
-            title: 'Registrar Usuario - YCarsSystem',
+            title: 'Dashboard Static - YCarsSystem',
             breadcrumbs: [
                 {
                     text: 'Dashboard',
@@ -37,7 +44,25 @@ const ROUTES: Routes = [
             ],
         } as SBRouteData,
         canActivate: [],
-        component: userComponents.RegisterComponent,
+        component: userContainers.RegisterComponent,
+    },
+    {
+        path: 'update',
+        data: {
+            title: 'Dashboard Light - YCarsSystem',
+            breadcrumbs: [
+                {
+                    text: 'Dashboard',
+                    link: '/user',
+                },
+                {
+                    text: 'Light',
+                    active: true,
+                },
+            ],
+        } as SBRouteData,
+        canActivate: [],
+        component: userContainers.UpdateComponent,
     },
 ];
 
