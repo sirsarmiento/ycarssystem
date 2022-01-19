@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserModel } from '../../models';
 import { UserService } from '../../services';
 
-import { DeleteUserComponent } from '../delete-user/delete-user.component';
+import { UserDeleteComponent } from '../user-delete/user-delete.component';
 
 const ELEMENT_DATA: UserModel[] = [
     {id: 1, username: 'Hydrogen', roles: 'ADMINISTRADOR', status: 'Vigente'},
@@ -59,7 +59,7 @@ export class UserComponent implements OnInit {
     }
 
     onDelele(id: number, username: string) {
-      const dialogRef = this.dialog.open(DeleteUserComponent, {
+      const dialogRef = this.dialog.open(UserDeleteComponent, {
         data: { id: id, username: username }
       }); 
 

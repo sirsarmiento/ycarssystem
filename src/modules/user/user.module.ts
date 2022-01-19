@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbAlertConfig, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DeleteUserComponent } from './components/delete-user/delete-user.component';
+import { UserDeleteComponent } from './components/user-delete/user-delete.component';
 
 /* Modules */
 import { AppCommonModule } from '@common/app-common.module';
@@ -33,7 +33,7 @@ import * as userServices from '@modules/user/services';
     declarations: [...userComponents.components],
     exports: [...userComponents.components],
     entryComponents: [
-        DeleteUserComponent
+        UserDeleteComponent
     ]
 })
 export class UserModule {}

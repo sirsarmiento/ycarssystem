@@ -15,11 +15,11 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'kt-delete-user',
-  templateUrl: './delete-user.component.html',
-  styleUrls: ['./delete-user.component.scss']
+  selector: 'kt-user-delete',
+  templateUrl: './user-delete.component.html',
+  styleUrls: ['./user-delete.component.scss']
 })
-export class DeleteUserComponent implements OnInit, OnDestroy {
+export class UserDeleteComponent implements OnInit, OnDestroy {
   username: string = '';
   isProcessing: boolean = false;
   formErrorsMessages: string[] = [];
@@ -31,7 +31,7 @@ export class DeleteUserComponent implements OnInit, OnDestroy {
 
   constructor(
     private userService: UserService,
-    public dialogRef: MatDialogRef<DeleteUserComponent>,
+    public dialogRef: MatDialogRef<UserDeleteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) { }
 
