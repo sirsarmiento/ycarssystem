@@ -20,7 +20,7 @@ export const ROUTES: Routes = [
             title: 'User - YCarsSystem',
             breadcrumbs: [
                 {
-                    text: 'Users',
+                    text: 'Usuarios',
                     active: true,
                 },
             ],

@@ -1,0 +1,32 @@
+<section class="kt-delete-user">
+    <div mat-dialog-title class="row m-7 d-flex">
+        <h3 class="font-weight-bolder">Eliminar Usuario</h3>
+        <!-- <mat-spinner diameter="30" class="mx-4" *ngIf="isProcessing"></mat-spinner> -->
+    </div>
+    <hr>
+    <div class="container py-5">
+        <div class="row" *ngIf="hasFormErrors">
+            <div class="col-12">
+                <!-- <ngb-alert [type]="'danger'" (close)="onCloseAlert()"> -->
+                    <p>Se encontraron las siguientes validaciones al procesar la operación:</p>
+                    <ul class="px-5">
+                        <li *ngFor="let message of formErrorsMessages">{{message}}</li>
+                    </ul>
+                <!-- </ngb-alert> -->
+            </div>
+        </div>
+
+        <div mat-dialog-content class="row">
+            <div class="col-12">
+                <p class="text-center text-message">¿Está seguro que desea eliminar el usuario <strong> "{{data.username}}" </strong>?</p>
+            </div>
+        </div>
+
+        <div mat-dialog-actions class="row">
+            <div class="col-12 d-flex justify-content-center">               
+                <button mat-raised-button class="btn btn-primary mx-2" (click)="onDelete()">Eliminar</button>
+                <button mat-raised-button class="btn btn-secondary mx-2" (click)="onClose()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</section>

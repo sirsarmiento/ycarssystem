@@ -31,5 +31,6 @@
     "puglint.enable": true,
     "puglint.run": "onSave",
     "scss.lint.duplicateProperties": "error",
-    "typescript.format.enable": true
+    "typescript.format.enable": true,
+    "javascript.validate.enable": false
 }

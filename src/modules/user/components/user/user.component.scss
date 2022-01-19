@@ -1,18 +1,7 @@
 @import 'styles/variables.scss';
 
-.mat-column-username {
-    flex: none;
-    width: 70px;
+table.mat-table {
+    table-layout: fixed;
+    width: 100%;
+    display: table;
 }
-
-.mat-column-roles {
-    flex: none;
-    width: 70px;
-
-}
-
-.mat-column-actions {
-    flex: none;
-    width: 70px;
-}
-

@@ -11,4 +11,8 @@ export class UserService {
     getAll(): Observable<UserModel[]>{
        return this.http.get<UserModel[]>(`${environment.apiUrl}/api/movimiento/personal/user`);
     }
+
+    delete(id: number){
+
+    }
 }

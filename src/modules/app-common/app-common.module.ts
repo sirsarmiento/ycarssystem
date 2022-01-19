@@ -16,8 +16,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 
-const angulaMaterial = [MatTableModule, MatIconModule, MatTooltipModule, MatPaginatorModule, MatSortModule, MatFormFieldModule];
+const angulaMaterial = [MatTableModule, MatIconModule, MatTooltipModule, MatPaginatorModule, MatDialogModule, MatSortModule, MatFormFieldModule, MatProgressSpinnerModule];
 
 /* Containers */
 import * as appCommonContainers from './containers';
