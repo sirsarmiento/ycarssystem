@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
         }
 
         this.loginForm = this.formBuilder.group({
-            username: ['ssarmiento', Validators.required],
-            password: ['Tucson*50*', Validators.required],
+            username: ['', Validators.required],
+            password: ['', Validators.required],
         });
     }
 
@@ -50,12 +50,14 @@ export class LoginComponent implements OnInit {
             return;
         }
 
+        console.log(this.f.username.value);
+
         this.authService
             .login(this.f.username.value, this.f.password.value)
             .pipe(first())
             .subscribe({
-                next: x => {
-                    console.log(x);
+                next: () => {
+                    console.log('paso');
                     // get return url from route parameters or default to '/'
                     const returnUrl = this.route.snapshot.queryParams.returnUrl || '/dashboard';
                     this.router.navigate([returnUrl]);
