@@ -28,6 +28,24 @@ export const ROUTES: Routes = [
         canActivate: [],
         component: userComponents.UserComponent,
     },
+    {
+        path: 'add',
+        data: {
+            title: 'Actualizar Usuario - YCarsSystem',
+            breadcrumbs: [
+                {
+                    text: 'Usuario',
+                    link: '/user',
+                },
+                {
+                    text: 'Agregar',
+                    active: true,
+                },
+            ],
+        } as SBRouteData,
+        canActivate: [],
+        component: userComponents.UserAddEditComponent,
+    }
 ];
 
 @NgModule({
