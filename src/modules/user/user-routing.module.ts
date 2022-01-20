@@ -31,7 +31,7 @@ export const ROUTES: Routes = [
     {
         path: 'add',
         data: {
-            title: 'Actualizar Usuario - YCarsSystem',
+            title: 'Agregar Usuario - YCarsSystem',
             breadcrumbs: [
                 {
                     text: 'Usuario',
@@ -39,6 +39,24 @@ export const ROUTES: Routes = [
                 },
                 {
                     text: 'Agregar',
+                    active: true,
+                },
+            ],
+        } as SBRouteData,
+        canActivate: [],
+        component: userComponents.UserAddEditComponent,
+    },
+    {
+        path: 'edit/:id',
+        data: {
+            title: 'Actualizar Usuario - YCarsSystem',
+            breadcrumbs: [
+                {
+                    text: 'Usuario',
+                    link: '/user',
+                },
+                {
+                    text: 'Editar',
                     active: true,
                 },
             ],

@@ -9,7 +9,7 @@
             <div class="col-12">
               <div class="form-group">
                 <mat-label>USUARIO</mat-label>
-                <input type="text" formControlName="username" class="form-control" value=""  [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <input type="text" formControlName="username" class="form-control" autofocus [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                 <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                     <div *ngIf="f.username.errors.required">Ingrese el usuario</div>
                 </div>
@@ -20,9 +20,9 @@
             <div class="col-12">
               <div class="form-group">
                 <mat-label>CONTRASEÑAS</mat-label>
-                <input type="password" formControlName="password" class="form-control" value=""  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                    <div *ngIf="f.paswword.errors.required">Ingrese contraseña</div>
+                    <div *ngIf="f.password.errors.required">Ingrese contraseña</div>
                 </div>
               </div>
             </div>
@@ -31,7 +31,7 @@
             <div class="col-12">
               <div class="form-group">
                 <mat-label>CONFIRME PASSWORD</mat-label>
-                <input type="password" formControlName="password2" class="form-control" value="" autofocus [ngClass]="{ 'is-invalid': submitted && f.password2.errors }" />
+                <input type="password" formControlName="password2" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password2.errors }" />
                 <div *ngIf="submitted && f.password2.errors" class="invalid-feedback">
                     <div *ngIf="f.password2.errors.required">Confirme la contraseña</div>
                 </div>
@@ -48,6 +48,18 @@
                 <label class="maxContent">
                   <input type="checkbox" [value]="r.nombre" (change)="onCheckChange($event)">
                   {{r.nombre}}
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <mat-label>ESTATUS</mat-label>
+              <div class="form-group" class="col-md-2">
+                <label class="maxContent">
+                  <input type="checkbox" formControlName="vigente">
+                  Vigente
                 </label>
               </div>
             </div>

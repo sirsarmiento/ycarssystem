@@ -8,18 +8,18 @@ import { UserService } from '../../services';
 
 import { UserDeleteComponent } from '../user-delete/user-delete.component';
 
-const ELEMENT_DATA: UserModel[] = [
-    {id: 1, username: 'Hydrogen', roles: 'ADMINISTRADOR', status: 'Vigente'},
-    {id: 2, username: 'Helium', roles: 'ADMINISTRADOR', status: 'Vigente'},
-    {id: 3, username: 'Lithium', roles: 'ADMINISTRADOR', status: 'Vigente'},
-    {id: 4, username: 'Beryllium', roles: 'USER', status: 'Vigente' },
-    {id: 5, username: 'Boron', roles: 'ADMINISTRADOR', status: 'Vigente'},
-    {id: 6, username: 'Carbon', roles: 'USER', status: 'Vigente'},
-    {id: 7, username: 'Nitrogen', roles: 'ADMINISTRADOR', status: 'Vigente'},
-    {id: 8, username: 'Oxygen', roles: 'ADMINISTRADOR', status: 'Vigente'},
-    {id: 9, username: 'Fluorine', roles: 'ADMINISTRADOR', status: 'Vigente'},
-    {id: 10, username: 'Neon', roles: 'USER', status: 'Vigente'},
-  ];
+// const ELEMENT_DATA: UserModel[] = [
+//     {id: 1, username: 'Hydrogen', roles: 'ADMINISTRADOR', status: 'Vigente'},
+//     {id: 2, username: 'Helium', roles: 'ADMINISTRADOR', status: 'Vigente'},
+//     {id: 3, username: 'Lithium', roles: 'ADMINISTRADOR', status: 'Vigente'},
+//     {id: 4, username: 'Beryllium', roles: 'USER', status: 'Vigente' },
+//     {id: 5, username: 'Boron', roles: 'ADMINISTRADOR', status: 'Vigente'},
+//     {id: 6, username: 'Carbon', roles: 'USER', status: 'Vigente'},
+//     {id: 7, username: 'Nitrogen', roles: 'ADMINISTRADOR', status: 'Vigente'},
+//     {id: 8, username: 'Oxygen', roles: 'ADMINISTRADOR', status: 'Vigente'},
+//     {id: 9, username: 'Fluorine', roles: 'ADMINISTRADOR', status: 'Vigente'},
+//     {id: 10, username: 'Neon', roles: 'USER', status: 'Vigente'},
+//   ];
 
 @Component({
     selector: 'sb-user',
@@ -28,7 +28,8 @@ const ELEMENT_DATA: UserModel[] = [
     styleUrls: ['user.component.scss'],
 })
 export class UserComponent implements OnInit {
-    dataSource = new MatTableDataSource<UserModel>(ELEMENT_DATA);
+    //dataSource = new MatTableDataSource<UserModel>(ELEMENT_DATA);
+    dataSource = new MatTableDataSource<UserModel>();
     //dataSource = ELEMENT_DATA;
     userDisplayedColumns: string[] = ['username', 'roles', 'status', 'actions'];
 
@@ -44,17 +45,17 @@ export class UserComponent implements OnInit {
     }
 
     refresh(){
-        // this.userService.getAll().subscribe(res => {
-        //     this.userDataSource.data = res;
-        //     console.log(res);
-        // });
+      this.userService.getAll().subscribe(res => {
+         this.dataSource.data = res;
+         console.log(res);
+     });
     }
 
     ngAfterViewInit(): void {
         this.dataSource.paginator = this.paginator;
     }
 
-    onCreate(){
+    onUpdate(id: number){
 
     }
 
@@ -64,9 +65,7 @@ export class UserComponent implements OnInit {
       }); 
 
       dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-            this.refresh();
-        }
+        this.refresh();
       });
     }
 }

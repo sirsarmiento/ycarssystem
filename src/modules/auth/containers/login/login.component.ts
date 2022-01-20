@@ -50,14 +50,11 @@ export class LoginComponent implements OnInit {
             return;
         }
 
-        console.log(this.f.username.value);
-
         this.authService
             .login(this.f.username.value, this.f.password.value)
             .pipe(first())
             .subscribe({
                 next: () => {
-                    console.log('paso');
                     // get return url from route parameters or default to '/'
                     const returnUrl = this.route.snapshot.queryParams.returnUrl || '/dashboard';
                     this.router.navigate([returnUrl]);

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, Validators, FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormArray, FormControl, FormGroup, AbstractControl } from '@angular/forms';
 import Swal from 'sweetalert2';
-
+import { Location } from '@angular/common';
 import { UserModel } from '../../models';
 import { UserService } from '../../services';
 
@@ -38,7 +38,8 @@ export class UserAddEditComponent implements OnInit {
     username: ['', Validators.required ],
     password: ['', Validators.required ],
     password2: ['', Validators.required ],
-    roles: new FormArray([], Validators.required)
+    roles: new FormArray([], Validators.required),
+    vigente: [true],
   }, {
     validators: this.passwordsIguales('password', 'password2')
   });
@@ -47,7 +48,8 @@ export class UserAddEditComponent implements OnInit {
         private fb: FormBuilder,
         private userService: UserService,
         private route: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private location: Location
     ) {}
 
     ngOnInit() {
@@ -65,11 +67,10 @@ export class UserAddEditComponent implements OnInit {
         }
 
         if (this.isAddMode) {
-          console.log('add', this.registerForm.value);
           this.createUser();
         } else {
-          console.log('update');
-            //this.updateUser();
+          console.log(this.registerForm);
+          this.updateUser();
         }
     }
     
@@ -81,6 +82,7 @@ export class UserAddEditComponent implements OnInit {
             'Usuario agregado con éxito',
             'success'
             );
+            this.location.back();
             //Swal.fire('Usuario creado',`${ resp['msg'] }`,'success');
         }, (err) => { 
             console.log(err);
@@ -90,7 +92,7 @@ export class UserAddEditComponent implements OnInit {
     }
     
     updateUser(){
-      if(this.f.estatus.value === false){ this.status = 'No Vigente'; }
+      if(this.f.vigente.value === false){ this.status = 'No Vigente'; }
       else{ this.status = 'Vigente'; }
 
       this.userService.edit(this.id, this.f.username.value, JSON.stringify(this.f.roles.value), this.status)
@@ -100,6 +102,7 @@ export class UserAddEditComponent implements OnInit {
           'Usuario modificado con éxito',
           'success'
         );
+        this.location.back();
       }, (err) => {
         Swal.fire('Error', err , 'error' );
       });
@@ -131,20 +134,20 @@ export class UserAddEditComponent implements OnInit {
         }
       }
     
-      onCheckChange(event: any) {
+      onCheckChange(e: any) {
         const formArray: FormArray = this.registerForm.get('roles') as FormArray;
     
-        if(event.target.checked){
-          formArray.push(new FormControl(event.target.value));
-        }//else{
-        //   let i: number = 0;
-        //   formArray.controls.forEach((ctrl: AbstractControl) => {
-        //     if(ctrl.value == event.target.value) {
-        //       formArray.removeAt(i);
-        //       return;
-        //     }
-        //     i++;
-        //   });
-        //}
+        if(e.target.checked){
+          formArray.push(new FormControl(e.target.value));
+        }else{
+           let i: number = 0;
+           formArray.controls.forEach((ctrl: AbstractControl) => {
+             if(ctrl.value == e.target.value) {
+               formArray.removeAt(i);
+               return;
+             }
+             i++;
+           });
+        }
       }
 }
