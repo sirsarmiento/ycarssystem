@@ -1,7 +1,7 @@
-import { AuthService } from './auth.service';
-import { UserService } from './user.service';
+import { AuthService } from '@modules/auth/services/auth.service';
+import { UserService } from '@modules/auth/services/user.service';
 
 export const services = [AuthService, UserService];
 
-export * from './auth.service';
-export * from './user.service';
+export * from '@modules/auth/services/auth.service';
+export * from '@modules/auth/services/user.service';

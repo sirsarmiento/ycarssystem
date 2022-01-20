@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 
-import { User } from '../models';
+import { User } from '@modules/auth/models';
 
 const userSubject: ReplaySubject<User> = new ReplaySubject(1);
 

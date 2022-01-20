@@ -8,6 +8,11 @@ const routes: Routes = [
         redirectTo: '/auth/login',
     },
     {
+        path: 'cliente',
+        loadChildren: () =>
+            import('modules/cliente/cliente-routing.module').then(m => m.ClienteRoutingModule),
+    },
+    {
         path: 'user',
         loadChildren: () =>
             import('modules/user/user-routing.module').then(m => m.UserRoutingModule),

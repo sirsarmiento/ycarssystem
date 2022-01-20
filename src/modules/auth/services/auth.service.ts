@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-import { environment } from '../../../environments/environment';
-import { User } from '../models';
+import { environment } from 'environments/environment';
+import { User } from '@modules/auth/models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

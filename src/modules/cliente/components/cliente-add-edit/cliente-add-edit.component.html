@@ -1,0 +1,114 @@
+<sb-layout-dashboard>
+  <sb-dashboard-head title="Usuario" [hideBreadcrumbs]="false"></sb-dashboard-head>
+  <sb-card>
+    <div class="card-body">
+      <h1 *ngIf="isAddMode">Agregar Cliente</h1>
+      <h1 *ngIf="!isAddMode">Editar Cliente</h1>
+      <form class="formEdit" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <!-- <mat-label>CEDULA</mat-label> -->
+                <input type="text" formControlName="cedula" placeholder="CÉDULA" class="form-control" autofocus [ngClass]="{ 'is-invalid': submitted && f.cedula.errors }" />
+                <div *ngIf="submitted && f.cedula.errors" class="invalid-feedback">
+                    <div *ngIf="f.cedula.errors.required">Ingrese la cédula</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <input type="text" formControlName="nombres" placeholder="NOMBRES" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors }" />
+                <div *ngIf="submitted && f.nombres.errors" class="invalid-feedback">
+                    <div *ngIf="f.nombres.errors.required">Ingrese nombre</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <input type="text" formControlName="apellidos" placeholder="APELLIDOS" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }" />
+                <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
+                    <div *ngIf="f.apellidos.errors.required">Ingrese apellido</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <input type="text" formControlName="direccion" placeholder="DIRECCIÓN" maxlength="100" class="form-control alignAddress toUpperCase"  [ngClass]="{ 'is-invalid': submitted && f.direccion.errors }" />
+                    <div *ngIf="submitted && f.direccion.errors" class="invalid-feedback">
+                        <div *ngIf="f.direccion.errors.required">Ingrese dirección</div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <input type="text" formControlName="telefono" placeholder="TELÉFONO" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }" />
+                <div *ngIf="submitted && f.telefono.errors" class="invalid-feedback">
+                    <div *ngIf="f.telefono.errors.required">Ingrese teléfono</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <input type="email" formControlName="email" placeholder="EMAIL" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Ingrese email</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-2">
+              <div class="form-group" >
+                  <select  formControlName="estado"  class="form-control" (ngModelChange)="getCiudad($event)" [ngClass]="{ 'is-invalid': submitted && f.estado.errors }">
+                      <option value="" disabled selected>ESTADO</option>
+                      <option *ngFor="let c of estados" [ngValue]="c.id">
+                              {{c.descripcion}}
+                      </option>
+                  </select>
+              
+                  <div *ngIf="submitted && f.estado.errors" class="invalid-feedback">
+                      <div *ngIf="f.estado.errors.required">Seleccione Estado</div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2">
+              <div class="form-group" >
+                  <select  formControlName="ciudad"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ciudad.errors }">
+                      <option value="" disabled selected>CIUDAD</option>
+                      <option *ngFor="let c of ciudades" [ngValue]="c.id">
+                              {{c.descripcion}}
+                      </option>
+                  </select>
+              
+                  <div *ngIf="submitted && f.ciudad.errors" class="invalid-feedback">
+                      <div *ngIf="f.ciudad.errors.required">Seleccione Ciudad</div>
+                  </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="row">
+            <button [disabled]="loading" class="btn btn-primary btn-block">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Guardar
+            </button>
+          </div>
+        </form>
+      </div>
+    <div class="card-footer small text-muted">Actualizado ayer a las 11:59 PM</div>
+  </sb-card>
+</sb-layout-dashboard>

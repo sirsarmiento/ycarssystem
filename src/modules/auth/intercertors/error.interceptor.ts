@@ -20,7 +20,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                         'Verifique el usuario y contraseña',
                         'error'
                     );
-                    this.authService.logout();
+                    //this.authService.logout();
                 } else if (err.status === 404) {
                     Swal.fire('Oops...', 'Error 404', 'error');
                 } else if (err.status === 500) {
