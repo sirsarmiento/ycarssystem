@@ -1,0 +1,29 @@
+<sb-layout-dashboard>
+  <sb-dashboard-head title="Usuario" [hideBreadcrumbs]="false"></sb-dashboard-head>
+  <sb-card>
+    <div class="card-body">
+      <h1 *ngIf="isAddMode">Agregar Estado</h1>
+      <h1 *ngIf="!isAddMode">Editar Estado</h1>
+      <form class="formEdit" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <input type="text" formControlName="descripcion" placeholder="DESCRIPCIÓN" class="form-control" autofocus [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors }" />
+                <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
+                    <div *ngIf="f.descripcion.errors.required">Ingrese la cédula</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <button [disabled]="loading" class="btn btn-primary btn-block">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Guardar
+            </button>
+          </div>
+        </form>
+      </div>
+    <div class="card-footer small text-muted">Actualizado ayer a las 11:59 PM</div>
+  </sb-card>
+</sb-layout-dashboard>

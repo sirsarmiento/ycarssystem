@@ -3,27 +3,25 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 
-import { UserModel } from '../../models';
-import { UserService } from '../../services';
+import { EstadoModel } from '@modules/estado/models';
+import { EstadoService } from '@modules/estado/services';
 
-import { UserDeleteComponent } from '../user-delete/user-delete.component';
+import { EstadoDeleteComponent } from '@modules/estado/components/estado-delete/estado-delete.component';
 
 @Component({
-    selector: 'sb-user',
+    selector: 'sb-estado',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './user.component.html',
-    styleUrls: ['user.component.scss'],
+    templateUrl: './estado.component.html',
+    styleUrls: ['estado.component.scss'],
 })
-export class UserComponent implements OnInit {
-    //dataSource = new MatTableDataSource<UserModel>(ELEMENT_DATA);
-    dataSource = new MatTableDataSource<UserModel>();
-    //dataSource = ELEMENT_DATA;
-    userDisplayedColumns: string[] = ['username', 'roles', 'status', 'actions'];
+export class EstadoComponent implements OnInit {
+    dataSource = new MatTableDataSource<EstadoModel>();
+    userDisplayedColumns: string[] = ['descripcion', 'status', 'actions'];
 
     @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
     constructor(
-        private userService: UserService,
+        private userService: EstadoService,
         private dialog: MatDialog,
     ) {}
 
@@ -34,6 +32,7 @@ export class UserComponent implements OnInit {
     refresh(){
       this.userService.getAll().subscribe(res => {
          this.dataSource.data = res;
+         console.log(res);
      });
     }
 
@@ -41,9 +40,13 @@ export class UserComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
     }
 
-    onDelele(id: number, username: string) {
-      const dialogRef = this.dialog.open(UserDeleteComponent, {
-        data: { id: id, username: username }
+    onUpdate(id: number){
+
+    }
+
+    onDelele(id: number, description: string) {
+      const dialogRef = this.dialog.open(EstadoDeleteComponent, {
+        data: { id: id, description: description }
       }); 
 
       dialogRef.afterClosed().subscribe(result => {
