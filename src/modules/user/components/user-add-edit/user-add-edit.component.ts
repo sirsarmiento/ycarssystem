@@ -55,6 +55,11 @@ export class UserAddEditComponent implements OnInit {
     ngOnInit() {
       this.id = this.route.snapshot.params['id'];
       this.isAddMode = !this.id;
+
+      if(this.id){
+        this.registerForm.controls.password.setValue('NoActualiza');
+        this.registerForm.controls.password2.setValue('NoActualiza');
+      }
     }
 
     get f() { return this.registerForm.controls; }
