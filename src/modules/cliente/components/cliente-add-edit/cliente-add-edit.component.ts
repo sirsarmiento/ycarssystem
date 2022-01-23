@@ -103,32 +103,25 @@ export class ClienteAddEditComponent implements OnInit {
     
     create(){
       this.clienteService.add(this.registerForm.value)
-        .subscribe( resp => {
+        .subscribe( (resp: any) => {
             Swal.fire(
             'Cliente creado',
-            'Operación realizada con éxito',
+            `${ resp['msg'] }`,
             'success'
             );
             this.location.back();
-            //Swal.fire('Usuario creado',`${ resp['msg'] }`,'success');
-        }, (err) => { 
-            console.log(err);
-        
-            Swal.fire('Error', `${ err }`, 'error' );
         });
     }
     
     update(){
       this.clienteService.edit(this.id, this.registerForm.value)
-      .subscribe( resp => {
+      .subscribe( (resp: any) => {
         Swal.fire(
           'Cliente modificado',
-          'Operación realizada con éxito',
+          `${ resp['msg'] }`,
           'success'
         );
         this.location.back();
-      }, (err) => {
-        Swal.fire('Error', err , 'error' );
       });
     }
 

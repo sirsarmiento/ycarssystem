@@ -69,25 +69,19 @@ export class UserAddEditComponent implements OnInit {
         if (this.isAddMode) {
           this.createUser();
         } else {
-          console.log(this.registerForm);
           this.updateUser();
         }
     }
     
     createUser(){
       this.userService.add( this.f.username.value, this.f.password.value, JSON.stringify(this.f.roles.value))
-        .subscribe( resp => {
+        .subscribe( (resp: any) => {
             Swal.fire(
             'Usuario creado',
-            'Usuario agregado con éxito',
+            `${ resp['msg'] }`,
             'success'
             );
             this.location.back();
-            //Swal.fire('Usuario creado',`${ resp['msg'] }`,'success');
-        }, (err) => { 
-            console.log(err);
-        
-            Swal.fire('Error', `${ err }`, 'error' );
         });
     }
     
@@ -96,15 +90,13 @@ export class UserAddEditComponent implements OnInit {
       else{ this.status = 'Vigente'; }
 
       this.userService.edit(this.id, this.f.username.value, JSON.stringify(this.f.roles.value), this.status)
-      .subscribe( resp => {
+      .subscribe( (resp: any) => {
         Swal.fire(
           'Usuario modificado',
-          'Usuario modificado con éxito',
+          `${ resp['msg'] }`,
           'success'
         );
         this.location.back();
-      }, (err) => {
-        Swal.fire('Error', err , 'error' );
       });
     }
 

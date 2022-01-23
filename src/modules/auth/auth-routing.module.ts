@@ -28,14 +28,6 @@ export const ROUTES: Routes = [
         } as SBRouteData,
     },
     {
-        path: 'register',
-        canActivate: [],
-        component: authContainers.RegisterComponent,
-        data: {
-            title: 'Pages Register - YCarsSystem',
-        } as SBRouteData,
-    },
-    {
         path: 'forgot-password',
         canActivate: [],
         component: authContainers.ForgotPasswordComponent,

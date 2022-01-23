@@ -14,17 +14,13 @@ export class ErrorInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(
             catchError(err => {
                 if (err.status === 401) {
-                    // auto logout if 401 response returned from api
-                    Swal.fire(
-                        'Credenciales invalidas',
-                        'Verifique el usuario y contraseña',
-                        'error'
-                    );
-                    //this.authService.logout();
+                    Swal.fire('Error 401',`${ err.error.msg }`,'error');
+                    this.authService.logout();
                 } else if (err.status === 404) {
-                    Swal.fire('Oops...', 'Error 404', 'error');
+                    Swal.fire('Error 404', `${ err.error.msg }`, 'error');
                 } else if (err.status === 500) {
-                    Swal.fire('Oops...', 'Error 500', 'error');
+                    console.log(err.error.msg);
+                    Swal.fire('Error 500', `${ err.error.msg }`, 'error');
                 }
 
                 const error = err.error.message || err.statusText;
