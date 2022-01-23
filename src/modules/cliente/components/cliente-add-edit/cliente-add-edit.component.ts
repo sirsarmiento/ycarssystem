@@ -46,7 +46,7 @@ export class ClienteAddEditComponent implements OnInit {
   status!: string;
 
   public registerForm = this.fb.group({
-    cedula: ['', Validators.required ],
+    cedula: ['13044519', Validators.required ],
     nombres: ['', Validators.required ],
     apellidos: ['', Validators.required ],
     direccion: ['', Validators.required ],
@@ -110,6 +110,8 @@ export class ClienteAddEditComponent implements OnInit {
             'success'
             );
             this.location.back();
+        }, (err) => {
+          this.location.back();
         });
     }
     
@@ -122,6 +124,9 @@ export class ClienteAddEditComponent implements OnInit {
           'success'
         );
         this.location.back();
+      }, (err) => {
+        console.log(err);
+        this.loading = false;
       });
     }
 

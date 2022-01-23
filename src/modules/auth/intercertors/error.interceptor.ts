@@ -15,11 +15,10 @@ export class ErrorInterceptor implements HttpInterceptor {
             catchError(err => {
                 if (err.status === 401) {
                     Swal.fire('Error 401',`${ err.error.msg }`,'error');
-                    this.authService.logout();
+                    //this.authService.logout();
                 } else if (err.status === 404) {
                     Swal.fire('Error 404', `${ err.error.msg }`, 'error');
                 } else if (err.status === 500) {
-                    console.log(err.error.msg);
                     Swal.fire('Error 500', `${ err.error.msg }`, 'error');
                 }
 

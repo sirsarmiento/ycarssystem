@@ -9,7 +9,7 @@
             <div class="col-12">
               <div class="form-group">
                 <!-- <mat-label>CEDULA</mat-label> -->
-                <input type="text" formControlName="cedula" placeholder="CÉDULA" class="form-control" autofocus [ngClass]="{ 'is-invalid': submitted && f.cedula.errors }" />
+                <input type="text" formControlName="cedula" placeholder="CÉDULA" maxlength="8" class="form-control" autofocus [ngClass]="{ 'is-invalid': submitted && f.cedula.errors }" />
                 <div *ngIf="submitted && f.cedula.errors" class="invalid-feedback">
                     <div *ngIf="f.cedula.errors.required">Ingrese la cédula</div>
                 </div>
@@ -19,7 +19,7 @@
           <div class="row">
             <div class="col-12">
               <div class="form-group">
-                <input type="text" formControlName="nombres" placeholder="NOMBRES" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors }" />
+                <input type="text" formControlName="nombres" placeholder="NOMBRES" maxlength="20" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors }" />
                 <div *ngIf="submitted && f.nombres.errors" class="invalid-feedback">
                     <div *ngIf="f.nombres.errors.required">Ingrese nombre</div>
                 </div>
@@ -29,7 +29,7 @@
           <div class="row">
             <div class="col-12">
               <div class="form-group">
-                <input type="text" formControlName="apellidos" placeholder="APELLIDOS" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }" />
+                <input type="text" formControlName="apellidos" placeholder="APELLIDOS" maxlength="20" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }" />
                 <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
                     <div *ngIf="f.apellidos.errors.required">Ingrese apellido</div>
                 </div>
@@ -47,20 +47,17 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-12">
+            <div class="col-6">
               <div class="form-group">
-                <input type="text" formControlName="telefono" placeholder="TELÉFONO" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }" />
+                <input type="text" formControlName="telefono" placeholder="TELÉFONO" maxlength="30" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }" />
                 <div *ngIf="submitted && f.telefono.errors" class="invalid-feedback">
                     <div *ngIf="f.telefono.errors.required">Ingrese teléfono</div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="row">
-            <div class="col-12">
+            <div class="col-6">
               <div class="form-group">
-                <input type="email" formControlName="email" placeholder="EMAIL" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <input type="email" formControlName="email" placeholder="EMAIL" maxlength="30" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                     <div *ngIf="f.email.errors.required">Ingrese email</div>
                 </div>
@@ -69,7 +66,7 @@
           </div>
           
           <div class="row">
-            <div class="col-2">
+            <div class="col-6">
               <div class="form-group" >
                   <select  formControlName="estado"  class="form-control" (ngModelChange)="getCiudad($event)" [ngClass]="{ 'is-invalid': submitted && f.estado.errors }">
                       <option value="" disabled selected>ESTADO</option>
@@ -83,9 +80,7 @@
                   </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-2">
+            <div class="col-6">
               <div class="form-group" >
                   <select  formControlName="ciudad"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ciudad.errors }">
                       <option value="" disabled selected>CIUDAD</option>

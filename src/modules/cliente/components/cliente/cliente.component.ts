@@ -32,7 +32,6 @@ export class ClienteComponent implements OnInit {
     refresh(){
       this.userService.getAll().subscribe(res => {
          this.dataSource.data = res;
-         console.log(res);
      });
     }
 
