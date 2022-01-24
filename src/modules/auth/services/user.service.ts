@@ -12,8 +12,6 @@ export class UserService {
         this.userName = localStorage.getItem('user');
         this.user = {
             id: '123',
-            firstName: 'ValornoenviadodesdeBackend',
-            lastName: 'ValornoenviadodesdeBackend',
             username: this.userName,
         };
     }
