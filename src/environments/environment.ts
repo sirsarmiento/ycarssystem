@@ -4,8 +4,7 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'http://ytallerbackend',
-    //apiUrl: 'http://localhost:8090/ytallerbackend/public',
+    apiUrl: 'http://ytallerbackend:8090',
 };
 
 /*
