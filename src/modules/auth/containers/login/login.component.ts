@@ -49,25 +49,23 @@ export class LoginComponent implements OnInit {
             this.loading = false;
             return;
         }
-        const returnUrl = this.route.snapshot.queryParams.returnUrl || '/dashboard';
-        this.router.navigate([returnUrl]);
 
-        // this.authService
-        //     .login(this.f.username.value, this.f.password.value)
-        //     .pipe(first())
-        //     .subscribe({
-        //         next: () => {
-        //             console.log('aqui');
-        //             // get return url from route parameters or default to '/'
-        //             const returnUrl = this.route.snapshot.queryParams.returnUrl || '/dashboard';
-        //             this.router.navigate([returnUrl]);
-        //             localStorage.setItem('user', this.f.username.value);
-        //         },
-        //         error: error => {
-        //             console.log(error.name);
-        //             this.error = error;
-        //             this.loading = false;
-        //         },
-        //     });
+        this.authService
+            .login(this.f.username.value, this.f.password.value)
+            .pipe(first())
+            .subscribe({
+                next: () => {
+                    console.log('aqui');
+                    // get return url from route parameters or default to '/'
+                    const returnUrl = this.route.snapshot.queryParams.returnUrl || '/dashboard';
+                    this.router.navigate([returnUrl]);
+                    localStorage.setItem('user', this.f.username.value);
+                },
+                error: error => {
+                    console.log(error.name);
+                    this.error = error;
+                    this.loading = false;
+                },
+            });
     }
 }
